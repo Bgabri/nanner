@@ -3,6 +3,28 @@
 #include <stdlib.h>
 #include "util.h"
 
+
+
+int minINF(int a, int b) {
+    /*
+     * a < b
+     * inf < inf => true
+     */
+    if (b == INFINITY) return 1;
+    if (a == INFINITY) return 0;
+    return a < b;
+}
+
+int addINF(int a, int b) {
+    /*
+     * a + b
+     */
+    if (a == INFINITY) return INFINITY;
+    if (b == INFINITY) return INFINITY;
+    return a + b;
+}
+
+
 // Function to calculate the minimum of three numbers
 int min3(int a, int b, int c) {
     // returns the smallest number of 3
