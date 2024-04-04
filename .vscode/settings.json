@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "sine.h": "c",
+        "levenshtein.h": "c"
+    }
+}

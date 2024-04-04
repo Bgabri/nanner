@@ -1,0 +1,3 @@
+./bin/nnr
+da
+babby
