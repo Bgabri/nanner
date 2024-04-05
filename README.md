@@ -1,5 +1,6 @@
 
 # <p style="text-align:center; color:#fabd2f">Nanner</p>
+Executes commands by fuzzy finding their alias
 ## Usage
 
 To use run `nnr [alias]` eg.
