@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "levenshtein.h"
+#include "sine.h"
+
 #include "util.h"
 #include "data.h"
+#include "error.h"
 
 
 // void geEntry
@@ -45,7 +48,8 @@ char* getFuzzyEntry(char *alias) {
     while (currentAlias[0] != '\0') {
 
         char *cmd = readLine(fileReader, '\n');
-        int distance = levenshteinDistance(alias, currentAlias);
+        // int distance = levenshteinDistance(alias, currentAlias);
+        int distance = sineDistance(alias, currentAlias);
 
         if (minINF(distance, minDistance)) {
             free(minEntry);
@@ -54,7 +58,6 @@ char* getFuzzyEntry(char *alias) {
         } else {
             free(cmd);
         }
-
 
         free(currentAlias);
         currentAlias = readLine(fileReader, '\n');
@@ -74,6 +77,27 @@ void setEntry(char *alias, char *command) {
 
 }
 
+void listEntries() {
+      
+    FILE* fileReader = fopen(DATA_PATH, "r");
+
+    char *currentAlias = readLine(fileReader, '\n');
+    while (currentAlias[0] != '\0') {
+        char *currentCmd = readLine(fileReader, '\n');
+
+        printf("%s %s\n", currentAlias, currentCmd);
+
+        free(currentCmd);
+        free(currentAlias);
+        currentAlias = readLine(fileReader, '\n');
+    }
+
+    free(currentAlias);
+
+    fclose(fileReader);
+
+
+}
 
 
 void addEntry(char *alias, char *command) {

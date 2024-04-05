@@ -1,8 +1,6 @@
-a1
-c1
-a2
-c2
-a3
-c3
-a4
-c4
+hello
+echo hello & echo world
+cow
+cowsay moooo
+matrix
+cmatrix -a -C yellow

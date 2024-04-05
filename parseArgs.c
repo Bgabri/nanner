@@ -38,10 +38,10 @@ int parseInput(char *argv[]) {
     if (!strcmp(argv[0], HELP))   return parseRemove(&argv[1]);
 
     char* cmd = getFuzzyEntry(argv[0]);
-
+    system(cmd);
     free(cmd);
 
-    return 0;
+    return 1;
 }
 
 int parseSet(char *argv[]) {
@@ -59,14 +59,14 @@ int parseGet(char *argv[]) {
 
 
 int parseList(char *argv[]) {
-    // if (*argv == NULL) return 0;
-    printError("parse list function not implemented", 0);
+    listEntries();
+    parseInput(&argv[0]);
     return 1;
 }
 
 int parseRemove(char *argv[]) {
     if (*argv == NULL) return 0;
-    printError("parse Remove function not implemented", 0);
+    printError("parse remove function not implemented", 0);
     return 1;
 }
 

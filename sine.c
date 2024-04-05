@@ -19,7 +19,7 @@ int convert(char* str1, char* str2, int pos1, int pos2) {
 
     int insert  = convert(str1, str2, pos1, pos2 + 1);
     int delete  = convert(str1, str2, pos1 + 1, pos2);
-    int replace = convert(str1, str2, pos1 + 1, pos2 + 1);
+    int replace = 1+convert(str1, str2, pos1 + 1, pos2 + 1);
 
 
     return 1 + min3(insert, delete, replace);
