@@ -46,7 +46,7 @@ int parseInput(char *argv[]) {
 
 int parseSet(char *argv[]) {
     if (*argv == NULL) return 0;
-    printError("parse set function not implemented", 0);
+    setEntry(argv[0], argv[1]);
     return 1;
 }
 

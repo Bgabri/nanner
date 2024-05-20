@@ -1,6 +1,0 @@
-hello
-echo hello & echo world
-cow
-cowsay moooo
-matrix
-cmatrix -a -C yellow

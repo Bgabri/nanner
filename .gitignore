@@ -1,4 +1,7 @@
 .vscode
 bin
+obj
+
 vgcore.*
 data.txt
+nnr

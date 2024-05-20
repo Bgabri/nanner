@@ -1,11 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "levenshtein.h"
 #include "sine.h"
 
 #include "util.h"
 #include "data.h"
 #include "error.h"
+
+
+FILE *safeOpen(const char *__restrict __filename, const char *__restrict __modes) {
+    FILE* file = fopen(DATA_PATH, "r");
+
+    if (file == NULL) {
+        printError("unable to open config file", 0);
+    }
+    return file;
+}
 
 
 // void geEntry
@@ -42,7 +53,7 @@ char* getFuzzyEntry(char *alias) {
     
     char *minEntry = NULL;
     int minDistance = INFINITY;
-    FILE* fileReader = fopen(DATA_PATH, "r");
+    FILE* fileReader = safeOpen(DATA_PATH, "r");
 
     char *currentAlias = readLine(fileReader, '\n');
     while (currentAlias[0] != '\0') {
@@ -63,6 +74,7 @@ char* getFuzzyEntry(char *alias) {
         currentAlias = readLine(fileReader, '\n');
     }
 
+
     free(currentAlias);
     fclose(fileReader);
 
@@ -73,13 +85,20 @@ char* getFuzzyEntry(char *alias) {
 
 
 void setEntry(char *alias, char *command) {
-    printError("set entry function not implemented", 0);
+    char cmd[1000] = "Waaa";
+    strcat(cmd, alias);
+    char suffix[] = "/aaaaa/g ";
+    strcat(cmd, suffix);
 
+    strcat(cmd, DATA_PATH);
+    printf("%s\n", cmd);
+
+    // system(cmd);
 }
 
 void listEntries() {
       
-    FILE* fileReader = fopen(DATA_PATH, "r");
+    FILE* fileReader = safeOpen(DATA_PATH, "r");
 
     char *currentAlias = readLine(fileReader, '\n');
     while (currentAlias[0] != '\0') {
@@ -102,7 +121,7 @@ void listEntries() {
 
 void addEntry(char *alias, char *command) {
 
-    FILE* fileWriter = fopen(DATA_PATH, "a");
+    FILE* fileWriter = safeOpen(DATA_PATH, "a");
 
     fprintf(fileWriter, "%s\n", alias);
     fprintf(fileWriter, "%s\n", command);
