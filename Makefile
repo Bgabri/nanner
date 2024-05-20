@@ -2,7 +2,9 @@
 CC = gcc
 CFLAGS = -std=c99 -Wall -Wextra -O2
 LDFLAGS =
+DATA_DIR = /usr/local/share/myprogram/data
 INSTALL_DIR = /usr/local/bin
+DATA_FILES = data.txt
 
 # Project name and source files
 TARGET = nnr
@@ -29,9 +31,11 @@ $(OBJ_DIR):
 
 # Rule to install the program
 install: $(TARGET)
-	install -d $(INSTALL_DIR)
-	install $(TARGET) $(INSTALL_DIR)
-
+	install -d $(DESTDIR)$(INSTALL_DIR)
+	install $(TARGET) $(DESTDIR)$(INSTALL_DIR)
+	install -d $(DESTDIR)$(DATA_DIR)
+	install $(DATA_FILES) $(DESTDIR)$(DATA_DIR)
+	
 # Rule to clean up the build files
 clean:
 	rm -f $(OBJ) $(TARGET)
