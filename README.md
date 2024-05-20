@@ -1,5 +1,5 @@
 
-<h1 align="center" style="color:#fabd2f">Nanner</h1>
+# $$\texttt{\large\color{Dandelion}Nanner}$$
 Executes commands by fuzzy finding their alias
 
 ## Dependencies
@@ -23,7 +23,8 @@ Currently, the aliases and commands are stored in `data.txt`, to modify or add a
 
 
 ## Building
-Build using `make`, an output file will be created in `bin`.
+`nnr` requires a a `C` compiler to be installed.
+Then simply build using `make` and if needed `make install`, to install.
 
 ## To DO
 Features being worked on or are in need of implementation
