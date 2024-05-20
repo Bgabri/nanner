@@ -16,6 +16,9 @@ OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 # Default target to build the program
 all: $(TARGET)
 
+data.txt:
+	touch.txt
+
 # Rule to link the object files into the final executable
 $(TARGET): $(OBJ)
 	$(CC) $(LDFLAGS) -o $@ $^
@@ -35,7 +38,7 @@ install: $(TARGET)
 	install $(TARGET) $(DESTDIR)$(INSTALL_DIR)
 	install -d $(DESTDIR)$(DATA_DIR)
 	install $(DATA_FILES) $(DESTDIR)$(DATA_DIR)
-	
+
 # Rule to clean up the build files
 clean:
 	rm -f $(OBJ) $(TARGET)

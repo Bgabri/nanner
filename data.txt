@@ -1,0 +1,8 @@
+hello
+echo hello & echo world
+cow
+cowsay moooo
+matrix
+cmatrix -a -C yellow
+AAAAAA
+sphinx of the black quatrz
