@@ -6,7 +6,6 @@
 #define RENAME "rename"
 #define HELP "help"
 
-
 int parseInput(char *argv[]);
 int parseSet(char *argv[]);
 int parseGet(char *argv[]);

@@ -3,4 +3,4 @@
 void addEntry(char *alias, char *command);
 void setEntry(char *alias, char *command);
 void listEntries();
-char* getFuzzyEntry(char *alias);
+char *getFuzzyEntry(char *alias);

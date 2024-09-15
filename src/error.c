@@ -1,8 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "error.h"
 
-
+#include <stdio.h>
+#include <stdlib.h>
 
 char* getColour(colour col) {
     switch (col) {
@@ -20,11 +19,9 @@ char* getColour(colour col) {
             return ANSI_COLOR_BLUE;
     }
     return "";
-
 }
 
 int printError(char msg[], int priority) {
-    
     printf("%s%s%s\n", getColour(priority), msg, ANSI_COLOR_RESET);
 
     exit(1);

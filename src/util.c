@@ -1,9 +1,8 @@
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "util.h"
 
-
+#include <stdio.h>
+#include <stdlib.h>
 
 int minINF(int a, int b) {
     /*
@@ -24,7 +23,6 @@ int addINF(int a, int b) {
     return a + b;
 }
 
-
 // Function to calculate the minimum of three numbers
 int min3(int a, int b, int c) {
     // returns the smallest number of 3
@@ -34,7 +32,7 @@ int min3(int a, int b, int c) {
     return min;
 }
 
-int strLen(char* inputString) {
+int strLen(char *inputString) {
     // calculates the length of a string
     int length = 0;
     while (inputString[length] != '\0') {
@@ -44,7 +42,7 @@ int strLen(char* inputString) {
 }
 
 /*
- * int size: the memory size to allocate 
+ * int size: the memory size to allocate
  * Allocates a block of memory in the heap and returns its pointer
  */
 void *safeMalloc(int size) {
@@ -59,8 +57,7 @@ void *safeMalloc(int size) {
 char *scanString(char endChar) {
     // dynamically scans a string from the io
     int size = 1;
-    char *p = (char*) safeMalloc(sizeof(char) * (size + 1));
-
+    char *p = (char *)safeMalloc(sizeof(char) * (size + 1));
 
     char current = getchar();
     int iPosition = 0;
@@ -70,7 +67,6 @@ char *scanString(char endChar) {
             // reallocate more space in memory
             size *= 2;
             p = realloc(p, sizeof(char) * (size + 1));
-
         }
 
         p[iPosition] = current;
@@ -78,7 +74,7 @@ char *scanString(char endChar) {
         current = getchar();
 
         iPosition++;
-    } 
+    }
 
     size = iPosition;
     p[iPosition] = '\0';

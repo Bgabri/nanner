@@ -1,16 +1,16 @@
+#include "data.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "error.h"
 #include "levenshtein.h"
 #include "sine.h"
-
 #include "util.h"
-#include "data.h"
-#include "error.h"
-
 
 FILE *safeOpen(const char *__restrict __filename, const char *__restrict __modes) {
-    FILE* file = fopen(DATA_PATH, "r");
+    FILE *file = fopen(DATA_PATH, "r");
 
     if (file == NULL) {
         printError("unable to open config file", 0);
@@ -18,13 +18,11 @@ FILE *safeOpen(const char *__restrict __filename, const char *__restrict __modes
     return file;
 }
 
-
 // void geEntry
-char *readLine(FILE* fileReader, char endChar) {
+char *readLine(FILE *fileReader, char endChar) {
     // dynamically scans a string from the file stream
     int size = 1;
-    char *p = (char*) safeMalloc(sizeof(char) * (size + 1));
-
+    char *p = (char *)safeMalloc(sizeof(char) * (size + 1));
 
     char current = fgetc(fileReader);
     int iPosition = 0;
@@ -34,7 +32,6 @@ char *readLine(FILE* fileReader, char endChar) {
             // reallocate more space in memory
             size *= 2;
             p = realloc(p, sizeof(char) * (size + 1));
-
         }
 
         p[iPosition] = current;
@@ -42,22 +39,20 @@ char *readLine(FILE* fileReader, char endChar) {
         current = fgetc(fileReader);
 
         iPosition++;
-    } 
+    }
 
     size = iPosition;
     p[iPosition] = '\0';
     return p;
 }
 
-char* getFuzzyEntry(char *alias) {
-    
+char *getFuzzyEntry(char *alias) {
     char *minEntry = NULL;
     int minDistance = INFINITY;
-    FILE* fileReader = safeOpen(DATA_PATH, "r");
+    FILE *fileReader = safeOpen(DATA_PATH, "r");
 
     char *currentAlias = readLine(fileReader, '\n');
     while (currentAlias[0] != '\0') {
-
         char *cmd = readLine(fileReader, '\n');
         // int distance = levenshteinDistance(alias, currentAlias);
         int distance = sineDistance(alias, currentAlias);
@@ -74,15 +69,11 @@ char* getFuzzyEntry(char *alias) {
         currentAlias = readLine(fileReader, '\n');
     }
 
-
     free(currentAlias);
     fclose(fileReader);
 
-
     return minEntry;
-
 }
-
 
 void setEntry(char *alias, char *command) {
     char cmd[1000] = "Waaa";
@@ -97,8 +88,7 @@ void setEntry(char *alias, char *command) {
 }
 
 void listEntries() {
-      
-    FILE* fileReader = safeOpen(DATA_PATH, "r");
+    FILE *fileReader = safeOpen(DATA_PATH, "r");
 
     char *currentAlias = readLine(fileReader, '\n');
     while (currentAlias[0] != '\0') {
@@ -114,14 +104,10 @@ void listEntries() {
     free(currentAlias);
 
     fclose(fileReader);
-
-
 }
 
-
 void addEntry(char *alias, char *command) {
-
-    FILE* fileWriter = safeOpen(DATA_PATH, "a");
+    FILE *fileWriter = safeOpen(DATA_PATH, "a");
 
     fprintf(fileWriter, "%s\n", alias);
     fprintf(fileWriter, "%s\n", command);
