@@ -4,3 +4,14 @@ obj
 
 vgcore.*
 nnr
+
+
+build/
+*.o
+*.exe
+*.log
+*.bin
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
